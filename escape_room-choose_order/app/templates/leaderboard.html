@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Leaderboard{% endblock %}
+{% block content %}
+<div class="leaderboard">
+    <h2>Leaderboard</h2>
+    <ul>
+        {% for user in users %}
+            <li>
+                <img src="{{ url_for('static', filename='trophy.webp') }}" alt="Trophy">
+                {{ user.username }} - {{ user.points }} points
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="leaderboard">
+    <h2>All Users</h2>
+    <ul>
+        {% for user in all_users %}
+            <li>{{ user.username }} </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,210 @@
+/* Add your styles here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: url("../static/home.webp") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+header {
+    background: rgba(51, 51, 51, 0.8); /* semi-transparent background */
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Adjust height to not overlap with header */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.content-background {
+    background: rgba(255, 255, 255, 0.3); /* Lighter semi-transparent background for content */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.points-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Darker semi-transparent background */
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.points-display p {
+    margin: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for better readability */
+}
+
+.alert {
+    padding: 1em;
+    margin: 1em 0;
+    border: 1px solid transparent;
+    border-radius: 0.25em;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+/* Styles for the login form */
+.form-container {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for form */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"] {
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for inputs */
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: calc(100% - 22px); /* Full width minus padding */
+    margin-bottom: 10px;
+}
+
+/* Styles for buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for leaderboard */
+.leaderboard {
+    background: rgba(255, 255, 255, 0.3); /* Lighter semi-transparent background for content */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.leaderboard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.leaderboard li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: rgb(90, 22, 22);
+    font-size: 1.2em;
+}
+
+.leaderboard li img {
+    margin-right: 10px;
+    width: 20px;  
+    height: 20px;
+}
+
+/* Styles for the main page icons */
+.icon-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin: 20px;
+}
+
+.icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.icon.completed img {
+    border: 2px solid green;
+    border-radius: 10px;
+}
+
+/* Example positions for icons */
+.icon.icon1 {
+    top: 10%;
+    left: 10%;
+}
+
+.icon.icon2 {
+    top: 10%;
+    right: 10%;
+}
+
+.icon.icon3 {
+    bottom: 10%;
+    left: 10%;
+}
+
+.icon.icon4 {
+    bottom: 10%;
+    right: 10%;
+}
+
+.icon.icon5 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

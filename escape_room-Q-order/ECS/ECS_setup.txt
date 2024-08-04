@@ -1,0 +1,2 @@
+manually:
+https://aws.plainenglish.io/deploying-a-docker-container-in-aws-using-fargate-5a19a140b018

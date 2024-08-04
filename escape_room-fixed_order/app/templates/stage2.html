@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Stage 2{% endblock %}
+{% block content %}
+<div class="content-background">
+    <h1>Stage 2</h1>
+    <p>You are on Stage {{ current_user.stage }}</p>
+    <div>
+        <a href="{{ url_for('main.stage1') }}" class="btn">Go Back to Stage 1</a>
+        {% if current_user.stage > 2 %}
+            <a href="{{ url_for('main.stage3') }}" class="btn">Go Forward to Stage 3</a> <!-- Assuming you have a stage 3 route -->
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

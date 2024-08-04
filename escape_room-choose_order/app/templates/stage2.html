@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Stage 2{% endblock %}
+{% block content %}
+<div class="content-background">
+    <h1>Stage 2</h1>
+    <p>What is 3 + 3?</p>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <p>{{ form.answer1 }}</p>
+        <p>{{ form.answer2 }}</p>
+    </form>
+    <div>
+        <a href="{{ url_for('main.home') }}" class="btn">Back to Main Page</a>
+    </div>
+</div>
+{% endblock %}

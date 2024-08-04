@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Stage 1{% endblock %}
+{% block content %}
+<div class="content-background">
+    <h1>Stage 1</h1>
+    <p>You are on Stage {{ current_user.stage }}</p>
+    <p>האם אתם מוכנים?</p>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <p>{{ form.answer1 }}</p>
+        <p>{{ form.answer2 }}</p>
+    </form>
+    <div>
+        {% if current_user.stage > 1 %}
+            <a href="{{ url_for('main.stage2') }}" class="btn">Go Forward to Stage 2</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

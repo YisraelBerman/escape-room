@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Leaderboard{% endblock %}
+{% block content %}
+<div class="content-background leaderboard">
+    <h1>Leaderboard</h1>
+    <ul>
+        {% for user in users %}
+        <li><img src="{{ url_for('static', filename='trophy.webp') }}" alt="Trophy" width="20" height="20">{{ user.username }} - Stage {{ user.stage }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

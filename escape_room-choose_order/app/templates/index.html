@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    {% if current_user.is_authenticated %}
+        <div class="points-display">
+            <p>Total Points: {{ current_user.points }}</p>
+        </div>
+        <div class="icon-container">
+            <a href="{{ url_for('main.stage1') }}" class="icon icon1 {% if current_user.completed_stage1 %}completed{% endif %}">
+                <img src="{{ url_for('static', filename='icon1.png') }}" alt="Stage 1">
+                {% if current_user.completed_stage1 %}✔{% endif %}
+            </a>
+            <a href="{{ url_for('main.stage2') }}" class="icon icon2 {% if current_user.completed_stage2 %}completed{% endif %}">
+                <img src="{{ url_for('static', filename='icon2.png') }}" alt="Stage 2">
+                {% if current_user.completed_stage2 %}✔{% endif %}
+            </a>
+            <a href="{{ url_for('main.stage3') }}" class="icon icon3 {% if current_user.completed_stage3 %}completed{% endif %}">
+                <img src="{{ url_for('static', filename='icon3.png') }}" alt="Stage 3">
+                {% if current_user.completed_stage3 %}✔{% endif %}
+            </a>
+            <a href="{{ url_for('main.stage4') }}" class="icon icon4 {% if current_user.completed_stage4 %}completed{% endif %}">
+                <img src="{{ url_for('static', filename='icon4.png') }}" alt="Stage 4">
+                {% if current_user.completed_stage4 %}✔{% endif %}
+            </a>
+            <a href="{{ url_for('main.stage5') }}" class="icon icon5 {% if current_user.completed_stage5 %}completed{% endif %}">
+                <img src="{{ url_for('static', filename='icon5.png') }}" alt="Stage 5">
+                {% if current_user.completed_stage5 %}✔{% endif %}
+            </a>
+        </div>        
+    {% else %}
+        <div class="content-background">
+            <h1>Welcome to the Escape Room Game</h1>
+            <p>Please log in or register to start playing.</p>
+        </div>
+    {% endif %}
+{% endblock %}

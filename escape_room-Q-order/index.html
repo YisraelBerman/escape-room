@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronological Order Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Arrange the Events in Chronological Order</h1>
+        <ul id="eventsList">
+            <!-- Events will be dynamically inserted here -->
+        </ul>
+        <button id="submitOrder">Submit</button>
+        <p id="result" style="display: none;"></p>
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p>Good job!</p>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

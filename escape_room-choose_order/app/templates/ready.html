@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Ready{% endblock %}
+{% block content %}
+<div class="modal" id="readyModal" tabindex="-1" role="dialog" aria-labelledby="readyModalLabel" aria-hidden="true" style="display: block;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="readyModalLabel">Are You Ready to Start?</h5>
+      </div>
+      <div class="modal-body">
+        <a href="{{ url_for('main.home') }}" class="btn btn-primary">Yes, Let's Go!</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('#readyModal').modal('show');
+  });
+</script>
+{% endblock %}

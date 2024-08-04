@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %} - Escape Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('main.home') }}">Home</a></li>
+          <li><a href="{{ url_for('main.leaderboard') }}">Leaderboard</a></li>
+          {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+          {% else %}
+            <li><a href="#" data-toggle="modal" data-target="#authModal">Register/Login</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    <main class="d-flex justify-content-center align-items-center flex-column">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Registration/Login Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="authModalLabel">Register/Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs" id="authTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="authTabContent">
+              <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                <form method="POST" action="{{ url_for('main.login') }}">
+                  {{ login_form.hidden_tag() }}
+                  <p>{{ login_form.email.label }} {{ login_form.email }}</p>
+                  <p>{{ login_form.password.label }} {{ login_form.password }}</p>
+                  <p>{{ login_form.remember }} {{ login_form.remember.label }}</p>
+                  <p>{{ login_form.submit }}</p>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                <form method="POST" action="{{ url_for('main.register') }}">
+                  {{ register_form.hidden_tag() }}
+                  <p>{{ register_form.username.label }} {{ register_form.username }}</p>
+                  <p>{{ register_form.email.label }} {{ register_form.email }}</p>
+                  <p>{{ register_form.password.label }} {{ register_form.password }}</p>
+                  <p>{{ register_form.confirm_password.label }} {{ register_form.confirm_password }}</p>
+                  <p>{{ register_form.submit }}</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ready to Start Modal -->
+    <div class="modal fade" id="readyModal" tabindex="-1" role="dialog" aria-labelledby="readyModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="readyModalLabel">Are You Ready to Start?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <a href="{{ url_for('main.home') }}" class="btn btn-primary">Yes, Let's Go!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% if current_user.is_authenticated and not current_user.stage %}
+    <script>
+      $(document).ready(function() {
+        $('#readyModal').modal('show');
+      });
+    </script>
+    {% endif %}
+  </body>
+</html>

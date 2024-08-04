@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('home.webp'); /* Add your background image here */
+    background-size: cover;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    background: rgba(255, 255, 255, 0.8); /* Add a slight background to make the text readable */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#eventsList {
+    list-style: none;
+    padding: 0;
+}
+
+#eventsList li {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: move;
+    background: #fff;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.4); /* Light red background */
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.popup-content p {
+    font-size: 1.2em;
+    color: green;
+}
