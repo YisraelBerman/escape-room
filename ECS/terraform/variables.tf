@@ -22,7 +22,7 @@ variable "subnet_cidrs" {
 
 variable "dockerhub_image" {
   description = "The Docker Hub image to use"
-  default     = "your-dockerhub-username/my-web-app:latest"
+  default     = "yisraelbdocker/bma:latest"
 }
 
 variable "ecs_cluster_name" {

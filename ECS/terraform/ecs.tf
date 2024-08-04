@@ -19,10 +19,19 @@ resource "aws_ecs_task_definition" "web_app" {
       containerPort = 80
       hostPort      = 80
     }]
+    #logConfiguration = {
+    #  logDriver = "awslogs"
+    #  options = {
+    #    "awslogs-group"         = "/ecs/web-app"
+    #    "awslogs-region"        = var.region
+    #    "awslogs-stream-prefix" = "ecs"
+    #  }
+    #}
   }])
 
   tags = var.tags
 }
+
 
 resource "aws_ecs_service" "web_app_service" {
   name            = var.ecs_service_name
@@ -34,11 +43,11 @@ resource "aws_ecs_service" "web_app_service" {
   network_configuration {
     subnets         = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]
     security_groups = [aws_security_group.ecs.id]
+    assign_public_ip = true
   }
 
   tags = var.tags
 }
-
 
 
 
