@@ -9,19 +9,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Arrange the Events in Chronological Order</h1>
+        <h1>סדרו את האירועים בסדר כרונולוגי</h1>
         <ul id="eventsList">
             <!-- Events will be dynamically inserted here -->
         </ul>
-        <button id="submitOrder">Submit</button>
+        <button id="submitOrder">שלח</button>
         <p id="result" style="display: none;"></p>
     </div>
     <div id="popup" class="popup">
         <div class="popup-content">
-            <p>Good job!</p>
+            <p>כל הכבוד!</p>
+            <label for="selectGroup"></label>
+            <select id="selectGroup">
+                <!-- Options will be dynamically inserted here -->
+            </select>
+            <p id="colorDisplay"></p>
             <button id="closePopup">Close</button>
         </div>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

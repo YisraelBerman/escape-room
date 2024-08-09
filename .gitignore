@@ -14,7 +14,10 @@ terraform.tfstate.backup
 .terraform.lock.hcl
 
 # Ignore Python __pycache__ directories
-__pycache__/
+**/__pycache__/
 
 # Ignore Python bytecode files
 *.pyc
+
+**/node_modules/
+
