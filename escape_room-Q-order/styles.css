@@ -69,3 +69,16 @@ h1 {
     font-size: 1.2em;
     color: green;
 }
+
+
+#selectGroup {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+#colorDisplay {
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
