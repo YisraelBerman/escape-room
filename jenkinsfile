@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Run a simple shell command
-                sh 'echo "Hello, Jenkins!"'
+                sh 'echo "Hello, Jenkins! this is a test"'
             }
         }
     }
