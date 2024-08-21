@@ -11,12 +11,10 @@ pipeline {
     }
     post {
         always {
-            stage('Cleanup') {
-                steps {
-                    // Clean up the workspace
-                    cleanWs()
-                }
-            }
+            // Clean up the workspace
+            cleanWs()
+               
+           
         }
     }
 }
