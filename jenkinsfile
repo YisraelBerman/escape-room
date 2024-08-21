@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Run a simple shell command
-                sh 'echo "Hello, Jenkins! this is a test"'
+				sh 'sudo docker build -t bm-app -f ./escape_room-Q-order/dockerfile ./escape_room-Q-order'            
             }
         }
     }
