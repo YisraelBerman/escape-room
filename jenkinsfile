@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/YisraelBerman/escape-room.git'
-            }
-        }
+        
         stage('Build') {
             steps {
                 // Run a simple shell command
