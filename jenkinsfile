@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Run a simple shell command
+                sh 'echo "Hello, Jenkins!"'
+            }
+        }
+    }
+}
+
