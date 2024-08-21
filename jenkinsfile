@@ -1,6 +1,6 @@
 pipeline {
     agent {
-	    label 'dynamicagent'
+	    label 'agent1'
     }
     stages {
         
