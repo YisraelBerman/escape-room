@@ -7,7 +7,7 @@ pipeline {
         
         stage('Build') {
             steps {
-		sh 'docker build -t bm-app -f ./escape_room-Q-order/dockerfile ./escape_room-Q-order'            
+		sh 'sudo docker build -t bm-app -f ./escape_room-Q-order/dockerfile ./escape_room-Q-order'            
             }
         }
     }
