@@ -1,8 +1,25 @@
 pipeline {
+    
     agent {
 	    label 'agent1'
     }
+    
+
+    environment {
+	    def btime="${BUILD_TIMESTAMP}"
+		GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true) 
+	    SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
+        BRANCH = "${env.gitlabBranch}"
+    }
+
+
     stages {
+        // TODO add test
+		stage('test'){
+			steps {
+				echo 'to be added someday'
+			}
+		}
         
         stage('Build') {
             steps {
@@ -10,6 +27,8 @@ pipeline {
             }
         }
     }
+    
+    
     post {
         always {
             // Clean up the workspace
