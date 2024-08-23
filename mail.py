@@ -1,13 +1,18 @@
+import sys
 import imaplib
 import email
 import requests
 import time
 
+# Check if the correct number of arguments is provided
+if len(sys.argv) != 2:
+    print("Usage: python your_script.py <email_password>")
+    sys.exit(1)
+
 # Email login details
 email_user = 'jenkinstrigger@outlook.co.il'
-email_pass = 'yis12345'
+email_pass = sys.argv[1]  # Fetch the password from the command-line argument
 imap_url = 'imap-mail.outlook.com'
-
 # Connect to the email server
 try:
     mail = imaplib.IMAP4_SSL(imap_url)
