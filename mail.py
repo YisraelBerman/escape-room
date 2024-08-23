@@ -55,6 +55,7 @@ def trigger_jenkins_job():
     except Exception as e:
         print(f"Error triggering Jenkins job: {e}")
 
+
 if __name__ == "__main__":
     while True:
         check_email()
