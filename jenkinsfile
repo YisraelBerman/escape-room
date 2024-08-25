@@ -17,7 +17,7 @@ pipeline {
         // TODO add test
 		stage('test'){
 			steps {
-				echo 'to be added someday'
+				echo 'To be added someday'
 			}
 		}
         
