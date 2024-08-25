@@ -5,14 +5,22 @@ import requests
 import time
 
 # Check if the correct number of arguments is provided
-if len(sys.argv) != 2:
-    print("Usage: python your_script.py <email_password>")
+if len(sys.argv) != 6:
+    print("Usage: python your_script.py <email_password> <jenkins_url> <jenkins_user> <jenkins_token> <jenkins_crumb>")
+    print("Note: If your Jenkins instance doesn't require a crumb, you can pass 'none' as the jenkins_crumb.")
     sys.exit(1)
 
 # Email login details
 email_user = 'jenkinstrigger@outlook.co.il'
-email_pass = sys.argv[1]  # Fetch the password from the command-line argument
+email_pass = sys.argv[1]  # Fetch the email password from the command-line argument
 imap_url = 'imap-mail.outlook.com'
+
+# Jenkins details
+jenkins_url = sys.argv[2]
+jenkins_user = sys.argv[3]
+jenkins_token = sys.argv[4]
+jenkins_crumb = sys.argv[5] if sys.argv[5].lower() != 'none' else None
+
 # Connect to the email server
 try:
     mail = imaplib.IMAP4_SSL(imap_url)
@@ -45,21 +53,24 @@ def check_email():
         # Check if the subject matches
         if 'Trigger Jenkins Job' in msg['subject']:
             print("Triggering Jenkins job...")
-            trigger_jenkins_job()
+            trigger_jenkins_job(jenkins_url, jenkins_user, jenkins_token, jenkins_crumb)
         else:
             print("No matching subject found.")
 
-def trigger_jenkins_job():
-    jenkins_url = 'http://jenkins-server-url/job/your-job-name/build'
+def trigger_jenkins_job(jenkins_url, jenkins_user, jenkins_token, jenkins_crumb=None):
+    headers = {}
+    
+    if jenkins_crumb:
+        headers['Jenkins-Crumb'] = jenkins_crumb
+    
     try:
-        response = requests.post(jenkins_url, auth=('your-jenkins-username', 'your-api-token'))
-        if response.status_code == 201:
+        response = requests.post(jenkins_url, auth=(jenkins_user, jenkins_token), headers=headers)
+        if response.status_code == 201 or response.status_code == 200:
             print("Jenkins job triggered successfully.")
         else:
             print(f"Failed to trigger Jenkins job. Status code: {response.status_code}")
     except Exception as e:
         print(f"Error triggering Jenkins job: {e}")
-
 
 if __name__ == "__main__":
     while True:
