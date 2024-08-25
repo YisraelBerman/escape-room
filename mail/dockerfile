@@ -1,0 +1,14 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Copy only the script into the container
+COPY mail.py .
+
+# Make the script executable
+RUN chmod +x mail.py
+
+# Run the script with parameters provided at runtime
+ENTRYPOINT ["python", "mail.py"]
