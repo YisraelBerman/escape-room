@@ -11,7 +11,7 @@ pipeline {
 	    SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
             BRANCH = "${env.gitlabBranch}"
 	    DOCKER_IMAGE_NAME = "bm-app:${SHORT_COMMIT}"
-            GITHUB_REPO = "https://github.com/YisraelBerman/escape-room"
+            GITHUB_REPO = "YisraelBerman/escape-room"
             GITHUB_TOKEN = credentials('github-token')
             GITHUB_USER = credentials('github-user')
 
@@ -23,8 +23,7 @@ pipeline {
 		stage('test'){
 			steps {
 				echo 'To be added someday. '
-				echo  ${GITHUB_TOKEN}
-				echo  ${GITHUB_USER}
+			
 
 			}
 		}
@@ -37,7 +36,7 @@ pipeline {
 
         stage('Docker Login') {
             steps {
-                sh "echo ${GITHUB_TOKEN} | docker login ghcr.io -u &{GITHUB_USER} --password-stdin"
+                sh "echo ${GITHUB_TOKEN} | docker login ghcr.io -u ${GITHUB_USER} --password-stdin"
             }
         }
 
