@@ -23,6 +23,9 @@ pipeline {
 		stage('test'){
 			steps {
 				echo 'To be added someday. '
+				echo  ${GITHUB_TOKEN}
+				echo  ${GITHUB_USER}
+
 			}
 		}
         
