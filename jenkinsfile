@@ -11,7 +11,7 @@ pipeline {
 	    SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
             BRANCH = "${env.gitlabBranch}"
 	    DOCKER_IMAGE_NAME = "bm-app:${SHORT_COMMIT}"
-            GITHUB_REPO = "YisraelBerman/escape-room"
+            GITHUB_REPO = "yisraelberman/escape-room"
             GITHUB_TOKEN = credentials('github-token')
             GITHUB_USER = credentials('github-user')
 
