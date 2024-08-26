@@ -7,9 +7,14 @@ pipeline {
 
     environment {
 	    def btime="${BUILD_TIMESTAMP}"
-		GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true) 
+	    GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true) 
 	    SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
-        BRANCH = "${env.gitlabBranch}"
+            BRANCH = "${env.gitlabBranch}"
+	    DOCKER_IMAGE_NAME = "bm-app:${SHORT_COMMIT}"
+            GITHUB_REPO = "https://github.com/YisraelBerman/escape-room"
+            GITHUB_TOKEN = credentials('github-token')
+            GITHUB_USER = credentials('github-user')
+
     }
 
 
@@ -23,7 +28,20 @@ pipeline {
         
         stage('Build') {
             steps {
-		sh 'docker build -t bm-app -f ./escape_room-Q-order/dockerfile ./escape_room-Q-order'            
+                sh "docker build -t ${DOCKER_IMAGE_NAME} -f ./escape_room-Q-order/dockerfile ./escape_room-Q-order"
+            }
+        }
+
+        stage('Docker Login') {
+            steps {
+                sh "echo ${GITHUB_TOKEN} | docker login ghcr.io -u &{GITHUB_USER} --password-stdin"
+            }
+        }
+
+        stage('Push Image to GitHub') {
+            steps {
+                sh "docker tag ${DOCKER_IMAGE_NAME} ghcr.io/${GITHUB_REPO}:${SHORT_COMMIT}"
+                sh "docker push ghcr.io/${GITHUB_REPO}:${SHORT_COMMIT}"
             }
         }
     }
@@ -33,7 +51,8 @@ pipeline {
         always {
             // Clean up the workspace
             cleanWs()
-               
+            sh "docker rmi ${DOCKER_IMAGE_NAME} || true"
+
            
         }
     }
