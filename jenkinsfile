@@ -51,14 +51,14 @@ pipeline {
 
         stage('deploy'){
 			steps {
-				script{
-                	withCredentials([file(credentialsId: 'forssh', variable: 'secret')]) {
-						script {
-                            sh 'ssh -i "$secret" ubuntu@44.202.106.141 "sudo docker run -d --name bm-app ghcr.io/yisraelberman/escape-room:latest"'
-							
-						}
-            		}
-            	}
+				script {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'forssh', keyFileVariable: 'SSH_KEY', usernameVariable: 'SSH_USER')]) {
+                        script {
+                            // SSH into the remote server and run the newly created image
+                            sh 'ssh -i "$SSH_KEY" $SSH_USER@44.202.106.141 "sudo docker run -d --name bm-app ghcr.io/yisraelberman/escape-room:latest"'
+                        }
+                    }
+                }
 
 			}
 		}
