@@ -44,8 +44,24 @@ pipeline {
             steps {
                 sh "docker tag ${DOCKER_IMAGE_NAME} ghcr.io/${GITHUB_REPO}:${SHORT_COMMIT}"
                 sh "docker push ghcr.io/${GITHUB_REPO}:${SHORT_COMMIT}"
+                sh "docker tag ${DOCKER_IMAGE_NAME} ghcr.io/${GITHUB_REPO}:latest"
+                sh "docker push ghcr.io/${GITHUB_REPO}:latest"
             }
         }
+
+        stage('deploy'){
+			steps {
+				script{
+                	withCredentials([file(credentialsId: 'forssh', variable: 'secret')]) {
+						script {
+                            sh 'sudo ssh -i "$secret" ubuntu@44.202.106.141 "docker run -d --name bm-app ghcr.io/yisraelberman/escape-room:latest"'
+							
+						}
+            		}
+            	}
+
+			}
+		}
     }
     
     
