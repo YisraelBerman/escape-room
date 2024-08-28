@@ -52,7 +52,8 @@ pipeline {
         stage('deploy'){
 			steps {
 				script{
-                	withCredentials([file(credentialsId: 'forssh', variable: 'secret')]) {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'forssh', keyFileVariable: 'secret')]) {
+                	
 						script {
                             sh 'ssh -i "$secret" ubuntu@44.212.28.135 "sudo docker run -d --name bm-app ghcr.io/yisraelberman/escape-room:latest"'
 
