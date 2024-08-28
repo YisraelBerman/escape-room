@@ -54,8 +54,8 @@ pipeline {
 				script{
                 	withCredentials([file(credentialsId: 'forssh', variable: 'secret')]) {
 						script {
-                            sh 'ssh -i "$SSH_KEY" $SSH_USER@44.212.28.135 "sudo docker run -d --name bm-app ghcr.io/yisraelberman/escape-room:latest"'
-							
+                            sh 'ssh -i "$secret" ubuntu@444.212.28.135 "sudo docker run -d --name bm-app ghcr.io/yisraelberman/escape-room:latest"'
+
 						}
             		}
             	}
