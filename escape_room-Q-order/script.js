@@ -52,7 +52,7 @@ submitButton.addEventListener('click', () => {
         result.style.display = 'none'; // Hide the result message
     } else {
         const correctPositions = orderedEvents.map((id, index) => id === correctOrder[index] ? '✔️' : '❌');
-        result.textContent = `Try again! Here's what you got: ${correctPositions.join(' ')}`;
+        result.textContent = `נסו שוב! תוצאות: ${correctPositions.join(' ')}`;
         result.style.color = 'black'; // Explicitly set the text color
         result.style.display = 'inline-block'; // Show the result message
     }
