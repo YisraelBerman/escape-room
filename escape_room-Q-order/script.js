@@ -77,7 +77,7 @@ function showColorPopup(color) {
     colorPopup.classList.add('popup');
     colorPopup.innerHTML = `
         <div class="popup-content">
-            <p>הצבע שלכם הוא  ${color}</p>
+            <p>קחו את הקופסה בצבע  ${color}</p>
             <button id="closeColorPopup">Close</button>
         </div>
     `;
