@@ -57,9 +57,9 @@ pipeline {
 						script {
                             
                             
-                            sh 'ssh -i "$secret" ubuntu@44.212.28.135 "sudo docker stop bm-app && docker rm bm-app"'
+                            sh 'ssh -i "$secret" ubuntu@184.72.79.164 "sudo docker stop bm-app && docker rm bm-app"'
                             
-                            sh 'ssh -i "$secret" ubuntu@44.212.28.135 "sudo docker run -d -p 3000:3000 --name bm-app ghcr.io/yisraelberman/escape-room:${SHORT_COMMIT}"'
+                            sh 'ssh -i "$secret" ubuntu@184.72.79.164 "sudo docker run -d -p 3000:3000 --name bm-app ghcr.io/yisraelberman/escape-room:${SHORT_COMMIT}"'
 
 						}
             		}
