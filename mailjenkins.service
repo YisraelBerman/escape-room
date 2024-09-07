@@ -1,0 +1,14 @@
+[Unit]
+Description=Python Script Service for triggering jenkins by listning to mail
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 <path>/mail.py  <email_password> <jenkins_url> <jenkins_user> <jenkins_token> <jenkins_crumb>
+WorkingDirectory=<path>
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=<usr>
+
+[Install]
+WantedBy=multi-user.target
