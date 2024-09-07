@@ -17,7 +17,7 @@ jobs:
         server_port: 587
         username:  ${{ secrets.EMAIL_USERNAME }}
         password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: "Trigger Jenkins Job"
+        subject: "Trigger Jenkins Job: bma"
         body: "This email is sent automatically by GitHub Actions to trigger the Jenkins job."
         to: jenkinstrigger@outlook.co.il
         from:  ${{ secrets.EMAIL_USERNAME }}
